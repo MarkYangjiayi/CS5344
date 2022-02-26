@@ -1,0 +1,68 @@
+import os
+import ast
+import networkx as nx
+import pandas as pd
+from tqdm import tqdm
+
+from data.utils import (add_edge, manage_and_save)
+
+def check_directory_absence(name, path):
+    os.chdir(path)
+    directories = os.listdir()
+    if not name in directories:
+        return True
+    else:
+        return False
+
+def refine_data():
+    starting_path = os.getcwd()
+    path = os.path.join(starting_path, 'data/vax_no_vax')
+    if check_directory_absence('final_data', path):
+        os.mkdir('final_data')
+        os.chdir(os.path.join(path, 'raw_data'))
+        df = pd.read_csv('./full_data.csv', usecols=['date', 'username', 'replies_count', 'retweets_count',
+                                                      'likes_count', 'hashtags', 'mentions', 'tweet'])
+        os.chdir(os.path.join(path, 'final_data'))
+        df['mentions'].replace('[]', "['self']", inplace=True)
+        df['hashtags'].replace('[]', "['noOne']", inplace=True)
+        df.to_csv('Final_data.csv', encoding='utf-8', index=False)
+
+        print('VACCINATION DATA FINAL SHAPE')
+        print(df.shape)
+
+    os.chdir(starting_path)
+
+def read_data(path):
+    df = pd.read_csv(path, usecols=['date', 'username', 'replies_count', 'retweets_count',
+                                    'likes_count', 'hashtags', 'mentions', 'tweet'])
+    df['mentions'].replace('[]', "['self']", inplace=True)
+    df['hashtags'].replace('[]', "['noOne']", inplace=True)
+    df.to_csv('./data/Final_data.csv', encoding='utf-8', index=False)
+    print('VACCINATION DATA FINAL SHAPE')
+    print(df.shape)
+
+def build_vaccination_graph(path):
+    df = pd.read_csv(path + '/Final_data.csv', lineterminator='\n')
+
+    G_dg = nx.DiGraph()
+    G_g = nx.Graph()
+
+    for _, row in tqdm(df.iterrows(), desc="Rows processed"):
+        mentions = ast.literal_eval(row[3])
+        if 'self' in mentions:
+            G_dg = add_edge(G_dg, row[2], row[7], row[6], row[5], row[4], row[1], row[1])
+        else:
+            for mention in mentions:
+                G_dg = add_edge(G_dg, row[2], row[7], row[6], row[5], row[4], row[1], mention)
+                G_g = add_edge(G_g, None, None, None, None, None, row[1], mention)
+                
+    G_dg.name = 'Starter vax Direct Graph'
+    G_g.name = 'Starter vax Graph'
+
+    graphs = [G_dg, G_g]
+    manage_and_save(graphs, path)
+
+    
+if __name__ == '__main__':
+    path = "./data/master.csv"
+    refine_data(path)
