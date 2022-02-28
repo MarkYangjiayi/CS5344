@@ -21,7 +21,7 @@ def add_sentiment():
     vax()
 
 def get_stopword():
-    with open("./preprocessing/stopwords_vader.txt", "rb") as fp:
+    with open("./data/stopwords_vader.txt", "rb") as fp:
         stop_words = pickle.load(fp)
     return stop_words
 
@@ -149,22 +149,17 @@ def add_sent_weight(DiGraph, CompGraph, stop_words, name):
         else:
             CompGraph[edge[0]][edge[1]]['weightWithSentiment'] = 1
 
-    nx.write_gml(CompGraph, f'Final_Graph_{name}.gml')
-    nx.write_gml(DiGraph, f'Final_DiGraph_{name}.gml')
+    nx.write_gml(CompGraph, f'./data/graph/Final_Graph_{name}.gml')
+    nx.write_gml(DiGraph, f'./data/graph/Final_DiGraph_{name}.gml')
 
 def vax():
-    starting_path = os.getcwd()
     stop_words = get_stopword()
-    path = os.path.join(starting_path, 'data/vax_no_vax/Graph')
-    os.chdir(os.path.join(path))
 
-    CompGraph = nx.read_gml('Final_Graph_Vax.gml')
+    CompGraph = nx.read_gml('./data/graph/Final_Graph_Vax.gml')
     if not 'weightWithSentiment' in list(CompGraph.edges(data=True))[0][2]:
         print(nx.info(CompGraph))
         print()
-        DiGraph = nx.read_gml('Final_DiGraph_Vax.gml')
+        DiGraph = nx.read_gml('./data/graph/Final_DiGraph_Vax.gml')
         print(nx.info(DiGraph))
         print()
         add_sent_weight(DiGraph, CompGraph, stop_words, 'Vax')
-
-    os.chdir(starting_path)
