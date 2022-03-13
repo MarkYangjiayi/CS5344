@@ -36,6 +36,9 @@ def get_metadata():
 
 # Yes, I know, would be better RE :(
 def clean(username):
+    """
+    Refine username, remove unecessary characters
+    """
     username = str(username)
     username = username.strip()
     username = username.split('\u2069')[0]
@@ -108,6 +111,10 @@ def nodes_management(G, option, threshold = 0):
         return -1
 
 def add_edge(G, tweet, hashtag, likes, retweets, replies, source, destination):
+    """
+    Add new edge to the graph.
+    """
+    # clean the username string
     source = clean(source)
     destination = clean(destination)
 

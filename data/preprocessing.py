@@ -33,6 +33,10 @@ def refine_data():
     os.chdir(starting_path)
 
 def read_data(path):
+    """
+    Read the relative fields that are usefull in building the paths.
+    Results will be be saved in a new file ./data/Final_data.csv
+    """
     df = pd.read_csv(path, usecols=['date', 'username', 'replies_count', 'retweets_count',
                                     'likes_count', 'hashtags', 'mentions', 'tweet'])
     df['mentions'].replace('[]', "['self']", inplace=True)
@@ -42,8 +46,14 @@ def read_data(path):
     print(df.shape)
 
 def build_vaccination_graph(path):
+    """
+    Build the vaccination graph.
+    """
+
+    # Read Twitter data from csv file
     df = pd.read_csv(path + '/Final_data.csv', lineterminator='\n')
 
+    # Build empty Graph and DiGraph
     G_dg = nx.DiGraph()
     G_g = nx.Graph()
 
