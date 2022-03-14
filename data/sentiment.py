@@ -126,10 +126,6 @@ def add_sent_weight(DiGraph, CompGraph, stop_words, name):
             DiGraph.nodes[node]['sentiment'] = new_value
             CompGraph.nodes[node]['sentiment'] = new_value
 
-    #print(max_n_edge)
-    #print(min_n_edge)
-    #print(np.mean(total_possible_edges))
-    #print(np.median(total_possible_edges))
     old_range = max_n_edge - min_n_edge
     new_range = new_max_edge - new_min_edge
 

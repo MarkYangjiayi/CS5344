@@ -17,15 +17,5 @@ def start_community_detection():
 def vax_graph():
     path = "./data/graph"
     log_write_start_end(True, 'VACCINATION GRAPH')
-    # info_no_sent_metis, info_no_sent_fluid = community_detection('Vax', path, 'weight')
-    info_sent_metis, info_sent_fluid = community_detection('Vax', path, 'sentiment')
-    # info_topic_metis, info_topic_fluid = community_detection('Vax', path, 'topic')
-    # info_hybrid_metis, info_hybrid_fluid = community_detection('Vax', path, 'hybrid')
-
-    # note_difference(info_no_sent_metis, info_sent_metis, 'Metis', 'sentiment')
-    # note_difference(info_no_sent_metis, info_topic_metis, 'Metis', 'topic')
-    # note_difference(info_no_sent_metis, info_hybrid_metis, 'Metis', 'hybrid')
-
-    
-    # note_difference(info_no_sent_fluid, info_sent_fluid, 'Fluid')
+    _, _ = community_detection('Vax', path, 'sentiment')
     log_write_start_end(False, 'Vax')

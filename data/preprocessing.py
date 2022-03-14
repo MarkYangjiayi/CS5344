@@ -6,32 +6,6 @@ from tqdm import tqdm
 
 from data.utils import (add_edge, manage_and_save)
 
-def check_directory_absence(name, path):
-    os.chdir(path)
-    directories = os.listdir()
-    if not name in directories:
-        return True
-    else:
-        return False
-
-def refine_data():
-    starting_path = os.getcwd()
-    path = os.path.join(starting_path, 'data/vax_no_vax')
-    if check_directory_absence('final_data', path):
-        os.mkdir('final_data')
-        os.chdir(os.path.join(path, 'raw_data'))
-        df = pd.read_csv('./full_data.csv', usecols=['date', 'username', 'replies_count', 'retweets_count',
-                                                      'likes_count', 'hashtags', 'mentions', 'tweet'])
-        os.chdir(os.path.join(path, 'final_data'))
-        df['mentions'].replace('[]', "['self']", inplace=True)
-        df['hashtags'].replace('[]', "['noOne']", inplace=True)
-        df.to_csv('Final_data.csv', encoding='utf-8', index=False)
-
-        print('VACCINATION DATA FINAL SHAPE')
-        print(df.shape)
-
-    os.chdir(starting_path)
-
 def read_data(path):
     """
     Read the relative fields that are usefull in building the paths.
@@ -75,4 +49,4 @@ def build_vaccination_graph(path):
     
 if __name__ == '__main__':
     path = "./data/master.csv"
-    refine_data(path)
+    read_data(path)
