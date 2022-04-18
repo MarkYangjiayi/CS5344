@@ -136,7 +136,7 @@ Use `Visual Studio` to open the project and Run the following 	`ipynb` files to 
  
  **2. Data Preprocessing & EDA**
  - [Data_analysis_description.ipynb](https://github.com/MarkYangjiayi/CS5344/blob/main/Data_Description_Visualization/Data_analysis_description.ipynb)
- - introductory-eda.ipynb
+ - [introductory-eda.ipynb](https://github.com/MarkYangjiayi/CS5344/blob/main/New_data_visualization_code/EDA/introductory-eda.ipynb)
 
  **3. Construct Echo Chamber**
  - [main_mention.ipynb](https://github.com/MarkYangjiayi/CS5344/blob/main/main_mention.ipynb)
