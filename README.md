@@ -107,9 +107,11 @@ Six Datasets are crawled by applying the [Twint tool](https://github.com/twintpr
 
 # Installation
 
-```git init```
+```
+git init
+git clone https://github.com/MarkYangjiayi/CS5344.git
 
-```git clone https://github.com/MarkYangjiayi/CS5344.git```
+```
 
 [(Back to top)](#table-of-contents)
 
