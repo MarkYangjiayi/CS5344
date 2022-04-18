@@ -151,7 +151,7 @@ Use `Visual Studio` to open the project and Run the following 	`ipynb` files to 
 
 # Plot
 Use **Gephi** to open Echo chamber diagrams
- - Six Echo chamber diagrams: [Download Link](https://drive.google.com/drive/folders/1qv98RuFSnwoCbo22L7F1IsVtbRQ9esTo?usp=sharing)
+ - Echo chamber diagrams: [Download Link](https://drive.google.com/drive/folders/1qv98RuFSnwoCbo22L7F1IsVtbRQ9esTo?usp=sharing)
  - Download the software Gephi from https://gephi.org/.
  
 [(Back to top)](#table-of-contents)
