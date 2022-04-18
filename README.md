@@ -13,7 +13,7 @@
 # Introduction
 
 This is the project of CS5344. 
-Echo chambers have been a discussion since social media become an important part of people’s daily lives. The advantage it has compared to traditional media makes it suitable for information spreading, as well as fake news and polarized opinion, which are some of the root causes of why echo chambers exist. **In this project, we study the topic of detecting and analyses of echo chambers from heated topics on covid-19 vaccination on Twitter **.  
+Echo chambers have been a discussion since social media become an important part of people’s daily lives. The advantage it has compared to traditional media makes it suitable for information spreading, as well as fake news and polarized opinion, which are some of the root causes of why echo chambers exist. **In this project, we study the topic of detecting and analyses of echo chambers from heated topics on covid-19 vaccination on Twitter.**  
 
 We achived **two goals**: 
 (i) to analyze and study the echo chambers of Twitter attitudes around vaccines
@@ -26,11 +26,12 @@ We achived **two goals**:
 # Dataset
 
 **1. Dataset Source:**  [Download link](https://drive.google.com/drive/folders/1YIk4phkw-2Ki_Ih11RSOv7BAd9su4x0D?usp=sharing) (Six Datasets that are crawled by our own)
+
 Download the data and put it to the `./data` folder.
 
 **2. Dataset Introduction:**
 
- Six Datasets are crawled by applying the [Twint tool](https://github.com/twintproject/twint) with the following keywords: \#Covid-19 Vaccine, \#Pfizer and \#Sinovac. The collection includes two time periods  March 1, 2021 \- July 1, 2021 and Dec 01, 2021 \- Mar 01, 2022 and includes 799422 tweets. The attributes are included in the datasets are *id, conversation\_id, created\_at, date, time, timezone, user\_id, username, name, place, tweet, mentions, urls, relies\_count, retweet\_count, likes\_count, hashtags, cashtags, link, retweet, quote\_url, video, near, retweet\_id, reply\_to*.
+Six Datasets are crawled by applying the [Twint tool](https://github.com/twintproject/twint) with the following keywords: **#Covid-19 Vaccine**, **#Pfizer** and **#Sinovac**. The collection includes two time periods **March 1, 2021 - July 1, 2021** and **Dec 01, 2021 - Mar 01, 2022** and includes **799422 tweets**. The attributes are included in the datasets are *id, conversation\_id, created\_at, date, time, timezone, user\_id, username, name, place, tweet, mentions, urls, relies\_count, retweet\_count, likes\_count, hashtags, cashtags, link, retweet, quote\_url, video, near, retweet\_id, reply\_to*.
 
 [(Back to top)](#table-of-contents)
 
